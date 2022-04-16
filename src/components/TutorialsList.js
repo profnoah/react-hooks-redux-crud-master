@@ -12,14 +12,14 @@ const TutorialsList = () => {
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchTitle, setSearchTitle] = useState("");
 
-  const tutorials = useSelector(state => state.tutorials);
+  const tutorials = useSelector((state) => state.tutorials);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(retrieveTutorials());
-  }, []);
+  }, [dispatch]);
 
-  const onChangeSearchTitle = e => {
+  const onChangeSearchTitle = (e) => {
     const searchTitle = e.target.value;
     setSearchTitle(searchTitle);
   };
@@ -36,11 +36,11 @@ const TutorialsList = () => {
 
   const removeAllTutorials = () => {
     dispatch(deleteAllTutorials())
-      .then(response => {
+      .then((response) => {
         console.log(response);
         refreshData();
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   };
